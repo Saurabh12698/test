@@ -12,15 +12,15 @@
 */
 use App\Community;
 
-Route::get('/', function () {
-    Community::createIndex($shards = null, $replicas = null);
+// Route::get('/', function () {
+//     Community::createIndex($shards = null, $replicas = null);
 
-    Community::putMapping($ignoreConflicts = true);
+//     Community::putMapping($ignoreConflicts = true);
 
-    Community::addAllToIndex();
+//     Community::addAllToIndex();
 
-    return view('welcome');
-});
+//     return view('welcome');
+// });
 
 Route::get('/search', function() {
 
@@ -30,6 +30,8 @@ Route::get('/search', function() {
 });
 
 Auth::routes();
+
+Route::get('/', 'FeedController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

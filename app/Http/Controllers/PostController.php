@@ -56,7 +56,7 @@ class PostController extends Controller
                 $path = 'Users/'.$user->uid.'/images'.'/'.date("Y-m-d").'/';
                 $post = New Post;
                 $post->pid = $pid;
-                $post->uid = $user->id;
+                $post->uid = $user->uid;
                 $post->url = $path."".$name;
                 $post->caption = $input['caption'];
                 $post->type = 0;
@@ -82,10 +82,10 @@ class PostController extends Controller
 
             if($file->move($path, $name)){
 
-                $path = 'Users/'.$user->id.'/videos'.'/'.date("Y-m-d").'/';
+                $path = 'Users/'.$user->uid.'/videos'.'/'.date("Y-m-d").'/';
                 $post = New Post;
                 $post->pid = $pid;
-                $post->uid = $user->id;
+                $post->uid = $user->uid;
                 $post->url = $path."".$name;
                 $post->caption = $input['name'];
                 $post->type = 1;
