@@ -19,6 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+@yield('style')
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
@@ -76,5 +77,6 @@
             @yield('content')
         </main>
     </div>
+    @yield('script')
 </body>
 </html>

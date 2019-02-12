@@ -22,12 +22,12 @@ use App\Community;
 //     return view('welcome');
 // });
 
-Route::get('/search', function() {
+// Route::get('/search', function() {
 
-    $articles = Community::searchByQuery(['match' => ['name' => 'Demetris']]);
+//     $articles = Community::searchByQuery(['match' => ['name' => 'Demetris']]);
 
-    return $articles;
-});
+//     return $articles;
+// });
 
 Auth::routes();
 

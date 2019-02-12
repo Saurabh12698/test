@@ -4,13 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use auth;
+
 use App\{
     Like,
-    Comments
+    Comment
 };
 
 class LikeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -39,8 +45,11 @@ class LikeController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::user();
+        $uid = $user->uid;
+
         $Like = new Like;
-        $Like->uid = $request->get('uid');
+        $Like->uid = $uid;
         $Like->pid = $request->get('pid');
         $Like->save();
     }

@@ -9,11 +9,7 @@ use Illuminate\{
     Support\Facades\DB
 };
 
-use App\{
-    Post,
-};
-
-class FeedController extends Controller
+class ProfileController extends Controller
 {
     public function __construct()
     {
@@ -26,8 +22,7 @@ class FeedController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        $uid = $user->uid;
+        $user  = Auth::user();
 
         $Posts = DB::table('posts')
         ->select('users.uid as userid','users.name as name','posts.pid as postid','posts.url as posturl','posts.caption as caption')
@@ -47,9 +42,7 @@ class FeedController extends Controller
         ->orWhere('posts.uid','=', $uid)
         ->get();
 
-        // dd($Posts);
-        return view('home',compact('Posts'));
-
+        // return view('profile',compact('Posts'));
     }
 
     /**

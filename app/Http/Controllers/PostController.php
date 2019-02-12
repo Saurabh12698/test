@@ -58,7 +58,9 @@ class PostController extends Controller
                 $post->pid = $pid;
                 $post->uid = $user->uid;
                 $post->url = $path."".$name;
-                $post->caption = $input['caption'];
+                if(!empty($input['caption'])){
+                    $post->caption = $input['caption'];
+                }
                 $post->type = 0;
                 $post->view = 0;
                 $post->endis = 0;
@@ -87,7 +89,9 @@ class PostController extends Controller
                 $post->pid = $pid;
                 $post->uid = $user->uid;
                 $post->url = $path."".$name;
-                $post->caption = $input['name'];
+                if(!empty($input['caption'])){
+                    $post->caption = $input['caption'];
+                }
                 $post->type = 1;
                 $post->view = 0;
                 $post->endis = 0;
@@ -120,8 +124,6 @@ class PostController extends Controller
         ->join('communities','communities.cid','=','usr_cmty_mems.cid')
         ->where('usr_cmty_mems.uid','=', $user->uid)
         ->get();
-        
-        // dd($community);
 
         if($post == 'img'){
             return view('post.image', compact('communities'));
